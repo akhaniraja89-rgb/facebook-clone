@@ -1,0 +1,2322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Facebook Clone | Home</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Your CSS -->
+    <style>
+        
+/* =========================================
+   FACEBOOK CLONE — CUSTOM CSS
+   File: style.css
+========================================= */
+
+/* ---------- RESET ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f2f5;
+    color: #1c1e21;
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #1877f2;
+    outline-offset: 2px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button img {
+    pointer-events: none;
+}
+
+/* ---------- ICONS ---------- */
+i[data-lucide],
+svg.lucide {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    stroke-width: 2;
+    vertical-align: middle;
+}
+
+/* ---------- TOP NAVBAR ---------- */
+header {
+    height: 64px;
+    background: #ffffff;
+    border-bottom: 1px solid #dddfe2;
+}
+
+header > div {
+    max-width: 100%;
+}
+
+header button,
+header a {
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+header input {
+    min-width: 0;
+}
+
+#mobileSearchBox {
+    background: #ffffff;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+#home {
+    min-height: calc(100vh - 64px);
+    align-items: flex-start;
+    padding-bottom: 35px;
+}
+
+#home > main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-bottom: 25px;
+}
+
+/* ---------- LEFT SIDEBAR ---------- */
+.left-sidebar {
+    position: relative;
+}
+
+.left-sidebar > div {
+    max-height: calc(100vh - 85px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.left-sidebar > div:hover {
+    scrollbar-color: #bcc0c4 transparent;
+}
+
+.left-sidebar a {
+    min-height: 48px;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.left-sidebar a:hover {
+    background: #e4e6eb;
+}
+
+.left-sidebar a:active {
+    transform: scale(0.98);
+}
+
+.left-sidebar a span {
+    line-height: 1.4;
+}
+
+.left-sidebar hr {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* ---------- STORIES ---------- */
+#home main > section:first-child {
+    margin-bottom: 20px;
+}
+
+.story-card {
+    border: none;
+    padding: 0;
+    isolation: isolate;
+    min-width: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.story-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.story-card img {
+    transition: transform 0.3s ease;
+}
+
+.story-card:hover img {
+    transform: scale(1.03);
+}
+
+.story-card::after {
+    content: "";
+    position: absolute;
+    inset: 35% 0 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(0, 0, 0, 0.65)
+    );
+}
+
+.story-card span {
+    z-index: 1;
+}
+
+/* ---------- CREATE POST ---------- */
+#profile {
+    border-radius: 12px;
+}
+
+#profile > div:first-child button {
+    transition: background-color 0.2s ease;
+}
+
+#profile > div:first-child button:hover {
+    background: #e4e6eb;
+}
+
+#profile button {
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+#profile button:active {
+    transform: scale(0.98);
+}
+
+#profile textarea {
+    min-height: 90px;
+    line-height: 1.6;
+}
+
+#postPreview img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* ---------- POSTS ---------- */
+.post-card {
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+.post-card > img {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    background: #f0f2f5;
+}
+
+.post-card > div:first-child button {
+    border: none;
+}
+
+.post-card button {
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.post-card button:hover {
+    background-color: #f0f2f5;
+}
+
+.post-card button:active {
+    transform: scale(0.98);
+}
+
+.post-card .like-btn.liked {
+    color: #1877f2;
+}
+
+.post-card .like-btn.liked svg {
+    fill: rgba(24, 119, 242, 0.12);
+    stroke: #1877f2;
+}
+
+.post-card .comment-form input {
+    border: 1px solid transparent;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.post-card .comment-form input:focus {
+    background: #ffffff;
+    border-color: #1877f2;
+}
+
+/* ---------- FEED SECTIONS ---------- */
+.feed-section {
+    scroll-margin-top: 85px;
+    min-height: 120px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- RIGHT SIDEBAR ---------- */
+.right-sidebar {
+    position: relative;
+}
+
+.right-sidebar > div {
+    max-height: calc(100vh - 85px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.right-sidebar > div:hover {
+    scrollbar-color: #bcc0c4 transparent;
+}
+
+.right-sidebar section h2 {
+    font-size: 17px;
+}
+
+.right-sidebar section a {
+    transition: background-color 0.2s ease;
+}
+
+.right-sidebar section a:hover {
+    background: #e4e6eb;
+}
+
+#contactsList button {
+    min-height: 52px;
+}
+
+#contactsList img {
+    object-fit: cover;
+}
+
+#contactSearch {
+    border: 1px solid #d8dadf;
+}
+
+#contactSearch:focus {
+    border-color: #1877f2;
+}
+
+/* ---------- NAVIGATION LINKS ---------- */
+.nav-item {
+    position: relative;
+    transition: background-color 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: #f0f2f5;
+}
+
+.nav-item.border-blue-600 {
+    border-bottom-color: #1877f2;
+}
+
+/* ---------- MOBILE BOTTOM NAV ---------- */
+nav.fixed.bottom-0 {
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+}
+
+nav.fixed.bottom-0 a,
+nav.fixed.bottom-0 button {
+    min-height: 42px;
+    border: none;
+    background: transparent;
+    transition: color 0.2s ease;
+}
+
+nav.fixed.bottom-0 a:hover,
+nav.fixed.bottom-0 button:hover {
+    color: #1877f2;
+}
+
+/* ---------- TOAST MESSAGE ---------- */
+#toast {
+    max-width: calc(100vw - 32px);
+    width: max-content;
+    text-align: center;
+    line-height: 1.5;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    animation: toastIn 0.25s ease;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* ---------- SCROLLBAR ---------- */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c5c8cc;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a5a8ad;
+}
+
+/* ---------- SELECTION ---------- */
+::selection {
+    color: #ffffff;
+    background: #1877f2;
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 1279px) {
+    #home {
+        gap: 16px;
+    }
+
+    #home > main {
+        max-width: 680px;
+    }
+}
+
+@media (max-width: 1023px) {
+    #home {
+        display: flex;
+        justify-content: center;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    #home > main {
+        width: 100%;
+        max-width: 680px;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 767px) {
+    body {
+        padding-bottom: 70px;
+    }
+
+    header {
+        height: 64px;
+    }
+
+    #home {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 76px 8px 80px;
+    }
+
+    #home > main {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    #home main > section:first-child {
+        margin-bottom: 14px;
+    }
+
+    #profile,
+    .post-card,
+    .feed-section {
+        border-radius: 10px;
+    }
+
+    .post-card {
+        padding: 12px;
+    }
+
+    .post-card > img {
+        max-height: 420px;
+        object-fit: cover;
+    }
+
+    .post-card .grid button {
+        gap: 5px;
+        padding: 9px 3px;
+        font-size: 12px;
+    }
+
+    .post-card .grid button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    #profile {
+        padding: 12px;
+    }
+
+    #profile .grid button {
+        gap: 5px;
+        padding: 8px 2px;
+        font-size: 12px;
+    }
+
+    #profile .grid button svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    .story-card img {
+        height: 155px;
+    }
+
+    #toast {
+        bottom: 80px;
+    }
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 380px) {
+    #home {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #home > main > section,
+    .post-card {
+        border-radius: 8px;
+    }
+
+    .story-card img {
+        height: 130px;
+    }
+
+    .post-card .grid button {
+        font-size: 11px;
+    }
+
+    header .flex.items-center.gap-2 {
+        gap: 5px;
+    }
+}
+
+/* ---------- REDUCE MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- ================= TOP NAVBAR ================= -->
+    <header class="fixed top-0 left-0 z-50 w-full bg-white shadow-sm">
+
+        <div class="flex h-16 items-center justify-between px-3 md:px-5">
+
+            <!-- Logo + Search -->
+            <div class="flex items-center gap-2 md:gap-3">
+
+                <a href="#home"
+                   class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-3xl font-bold text-white">
+                    f
+                </a>
+
+                <div class="hidden sm:flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2">
+                    <i data-lucide="search" class="h-5 w-5 text-gray-500"></i>
+
+                    <input
+                        id="desktopSearch"
+                        type="search"
+                        placeholder="Search Facebook"
+                        class="w-36 bg-transparent text-sm outline-none md:w-48"
+                    >
+                </div>
+
+                <button
+                    id="mobileSearchBtn"
+                    type="button"
+                    aria-label="Search"
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 sm:hidden">
+                    <i data-lucide="search" class="h-5 w-5"></i>
+                </button>
+
+            </div>
+
+            <!-- Main Navigation -->
+            <nav class="hidden h-full items-center gap-1 md:flex">
+
+                <a href="#home"
+                   aria-label="Home"
+                   title="Home"
+                   class="nav-item flex h-12 w-16 items-center justify-center rounded-lg border-b-4 border-blue-600 text-blue-600">
+                    <i data-lucide="house" class="h-6 w-6"></i>
+                </a>
+
+                <a href="#videos"
+                   aria-label="Watch"
+                   title="Watch"
+                   class="nav-item flex h-12 w-16 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100">
+                    <i data-lucide="clapperboard" class="h-6 w-6"></i>
+                </a>
+
+                <a href="#marketplace"
+                   aria-label="Marketplace"
+                   title="Marketplace"
+                   class="nav-item flex h-12 w-16 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100">
+                    <i data-lucide="store" class="h-6 w-6"></i>
+                </a>
+
+                <a href="#groups"
+                   aria-label="Groups"
+                   title="Groups"
+                   class="nav-item flex h-12 w-16 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100">
+                    <i data-lucide="users" class="h-6 w-6"></i>
+                </a>
+
+                <a href="#friends"
+                   aria-label="Friends"
+                   title="Friends"
+                   class="nav-item flex h-12 w-16 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100">
+                    <i data-lucide="user-round" class="h-6 w-6"></i>
+                </a>
+
+            </nav>
+
+            <!-- Right Navbar -->
+            <div class="flex items-center gap-2">
+
+                <button
+                    id="menuBtn"
+                    type="button"
+                    aria-label="Menu"
+                    title="Menu"
+                    class="hidden h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 sm:flex">
+                    <i data-lucide="grid-3x3" class="h-5 w-5"></i>
+                </button>
+
+                <button
+                    id="messengerBtn"
+                    type="button"
+                    aria-label="Messenger"
+                    title="Messenger"
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i data-lucide="message-circle" class="h-5 w-5"></i>
+                </button>
+
+                <button
+                    id="notificationsBtn"
+                    type="button"
+                    aria-label="Notifications"
+                    title="Notifications"
+                    class="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200">
+                    <i data-lucide="bell" class="h-5 w-5"></i>
+                    <span class="absolute right-1 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] text-white">
+                        3
+                    </span>
+                </button>
+
+                <button
+                    id="profileMenuBtn"
+                    type="button"
+                    aria-label="Profile menu"
+                    title="Profile menu"
+                    class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-blue-600 font-bold text-white">
+                    U
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Mobile Search Input -->
+        <div id="mobileSearchBox" class="hidden border-t border-gray-200 p-3 sm:hidden">
+            <div class="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2">
+                <i data-lucide="search" class="h-5 w-5 text-gray-500"></i>
+                <input
+                    id="mobileSearch"
+                    type="search"
+                    placeholder="Search Facebook"
+                    class="w-full bg-transparent text-sm outline-none"
+                >
+            </div>
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN LAYOUT ================= -->
+    <div id="home"
+         class="mx-auto flex max-w-[1600px] gap-5 px-3 pt-20 md:px-5">
+
+        <!-- ================= LEFT SIDEBAR ================= -->
+        <aside class="left-sidebar hidden w-64 shrink-0 lg:block">
+
+            <div class="sticky top-20 space-y-1">
+
+                <a href="#profile"
+                   class="flex items-center gap-3 rounded-lg p-3 font-semibold hover:bg-gray-200">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 font-bold text-white">U</span>
+                    <span>Your Profile</span>
+                </a>
+
+                <a href="#friends"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
+                    <span>Friends</span>
+                </a>
+
+                <a href="#memories"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="clock" class="h-6 w-6 text-blue-600"></i>
+                    <span>Memories</span>
+                </a>
+
+                <a href="#saved"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="bookmark" class="h-6 w-6 text-purple-600"></i>
+                    <span>Saved</span>
+                </a>
+
+                <a href="#groups"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="users-round" class="h-6 w-6 text-blue-600"></i>
+                    <span>Groups</span>
+                </a>
+
+                <a href="#videos"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="clapperboard" class="h-6 w-6 text-blue-600"></i>
+                    <span>Video</span>
+                </a>
+
+                <a href="#marketplace"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="store" class="h-6 w-6 text-blue-600"></i>
+                    <span>Marketplace</span>
+                </a>
+
+                <a href="#events"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="calendar-days" class="h-6 w-6 text-red-500"></i>
+                    <span>Events</span>
+                </a>
+
+                <a href="#feed"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <i data-lucide="newspaper" class="h-6 w-6 text-green-600"></i>
+                    <span>News Feed</span>
+                </a>
+
+                <hr class="my-3 border-gray-300">
+
+                <h3 class="px-3 py-2 text-sm font-bold text-gray-500">
+                    Your Shortcuts
+                </h3>
+
+                <a href="#groups"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <img
+                        src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=80"
+                        alt="Community"
+                        class="h-9 w-9 rounded-lg object-cover"
+                    >
+                    <span>Community Group</span>
+                </a>
+
+                <a href="#marketplace"
+                   class="flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200">
+                    <img
+                        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=80"
+                        alt="Fashion"
+                        class="h-9 w-9 rounded-lg object-cover"
+                    >
+                    <span>Fashion Store</span>
+                </a>
+
+                <p class="px-3 py-4 text-xs leading-6 text-gray-500">
+                    Privacy · Terms · Advertising · Cookies · More
+                </p>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= CENTER FEED ================= -->
+        <main id="feed" class="min-w-0 flex-1">
+
+            <!-- Stories -->
+            <section class="mb-5">
+
+                <div class="mb-3 flex items-center justify-between">
+                    <h2 class="text-lg font-bold">Stories</h2>
+                    <button id="seeAllStories"
+                            type="button"
+                            class="text-sm font-semibold text-blue-600 hover:underline">
+                        See all
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
+
+                    <!-- Create Story -->
+                    <button
+                        id="createStoryBtn"
+                        type="button"
+                        class="overflow-hidden rounded-xl bg-white text-left shadow-sm hover:shadow-md">
+                        <div class="relative h-28 sm:h-40">
+                            <img
+                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300"
+                                alt="Your story"
+                                class="h-full w-full object-cover"
+                            >
+                        </div>
+                        <div class="relative px-2 pb-3 pt-5 text-center text-xs font-semibold sm:text-sm">
+                            <span class="absolute -top-4 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-blue-600 text-white">
+                                <i data-lucide="plus" class="h-4 w-4"></i>
+                            </span>
+                            Create story
+                        </div>
+                    </button>
+
+                    <!-- Story 1 -->
+                    <button type="button"
+                            class="story-card relative overflow-hidden rounded-xl bg-gray-300 text-left">
+                        <img
+                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400"
+                            alt="Sarah's story"
+                            class="h-44 w-full object-cover transition hover:scale-105 sm:h-56"
+                        >
+                        <span class="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-600 bg-white font-bold text-blue-600">
+                            S
+                        </span>
+                        <span class="absolute bottom-3 left-3 text-sm font-bold text-white drop-shadow">
+                            Sarah
+                        </span>
+                    </button>
+
+                    <!-- Story 2 -->
+                    <button type="button"
+                            class="story-card relative hidden overflow-hidden rounded-xl bg-gray-300 text-left sm:block">
+                        <img
+                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400"
+                            alt="Ali's story"
+                            class="h-56 w-full object-cover transition hover:scale-105"
+                        >
+                        <span class="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-600 bg-white font-bold text-blue-600">
+                            A
+                        </span>
+                        <span class="absolute bottom-3 left-3 text-sm font-bold text-white drop-shadow">
+                            Ali
+                        </span>
+                    </button>
+
+                    <!-- Story 3 -->
+                    <button type="button"
+                            class="story-card relative hidden overflow-hidden rounded-xl bg-gray-300 text-left md:block">
+                        <img
+                            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400"
+                            alt="Fashion story"
+                            class="h-56 w-full object-cover transition hover:scale-105"
+                        >
+                        <span class="absolute left-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border-4 border-blue-600 bg-white font-bold text-blue-600">
+                            F
+                        </span>
+                        <span class="absolute bottom-3 left-3 text-sm font-bold text-white drop-shadow">
+                            Fashion
+                        </span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- Create Post -->
+            <section id="profile"
+                     class="mb-5 rounded-xl bg-white p-4 shadow-sm">
+
+                <div class="flex items-center gap-3">
+
+                    <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
+                        U
+                    </div>
+
+                    <button
+                        id="openPostInput"
+                        type="button"
+                        class="flex-1 rounded-full bg-gray-100 px-4 py-3 text-left text-gray-500 hover:bg-gray-200">
+                        What's on your mind?
+                    </button>
+
+                </div>
+
+                <hr class="my-4 border-gray-200">
+
+                <div class="grid grid-cols-3 gap-1">
+
+                    <button id="photoBtn"
+                            type="button"
+                            class="flex items-center justify-center gap-2 rounded-lg p-2 text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                        <i data-lucide="image" class="h-5 w-5 text-green-500"></i>
+                        <span>Photo</span>
+                    </button>
+
+                    <button id="videoBtn"
+                            type="button"
+                            class="flex items-center justify-center gap-2 rounded-lg p-2 text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                        <i data-lucide="video" class="h-5 w-5 text-red-500"></i>
+                        <span>Video</span>
+                    </button>
+
+                    <button id="feelingBtn"
+                            type="button"
+                            class="flex items-center justify-center gap-2 rounded-lg p-2 text-sm font-semibold text-gray-600 hover:bg-gray-100">
+                        <i data-lucide="smile" class="h-5 w-5 text-yellow-500"></i>
+                        <span class="hidden sm:inline">Feeling</span>
+                        <span class="sm:hidden">Mood</span>
+                    </button>
+
+                </div>
+
+                <!-- Post Form -->
+                <form id="createPostForm" class="mt-4 hidden">
+
+                    <textarea
+                        id="postText"
+                        rows="3"
+                        placeholder="Write something..."
+                        class="w-full resize-y rounded-lg border border-gray-300 p-3 outline-none focus:border-blue-500"
+                    ></textarea>
+
+                    <div id="postPreview" class="mt-3 hidden">
+                        <img id="postPreviewImage"
+                             src=""
+                             alt="Selected post preview"
+                             class="max-h-64 rounded-lg object-cover">
+                    </div>
+
+                    <input
+                        id="photoInput"
+                        type="file"
+                        accept="image/*"
+                        class="hidden"
+                    >
+
+                    <input
+                        id="videoInput"
+                        type="file"
+                        accept="video/*"
+                        class="hidden"
+                    >
+
+                    <div class="mt-3 flex justify-end gap-2">
+                        <button
+                            id="cancelPostBtn"
+                            type="button"
+                            class="rounded-lg bg-gray-200 px-4 py-2 font-semibold hover:bg-gray-300">
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="rounded-lg bg-blue-600 px-5 py-2 font-semibold text-white hover:bg-blue-700">
+                            Post
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- Posts Feed -->
+            <div id="postsContainer" class="space-y-5">
+
+                <!-- Post 1 -->
+                <article class="post-card rounded-xl bg-white p-4 shadow-sm"
+                         data-search="sarah beautiful day nature travel">
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+                            <img
+                                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"
+                                alt="Sarah"
+                                class="h-11 w-11 rounded-full object-cover"
+                            >
+
+                            <div>
+                                <h3 class="font-bold">Sarah Ahmed</h3>
+                                <p class="text-xs text-gray-500">
+                                    2 hours ago · <i data-lucide="globe" class="inline h-3 w-3"></i>
+                                </p>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                                class="post-menu-btn rounded-full p-2 hover:bg-gray-100"
+                                aria-label="Post options">
+                            <i data-lucide="more-horizontal" class="h-5 w-5"></i>
+                        </button>
+
+                    </div>
+
+                    <p class="my-4 text-sm leading-6">
+                        Beautiful day, beautiful memories! Sometimes the simplest
+                        moments become the best memories. ❤️
+                    </p>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1000"
+                        alt="Beautiful nature"
+                        class="max-h-[500px] w-full rounded-lg object-cover"
+                        loading="lazy"
+                    >
+
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+                        <span class="reaction-count">👍 124</span>
+                        <span>18 comments · 5 shares</span>
+                    </div>
+
+                    <hr class="my-3 border-gray-200">
+
+                    <div class="grid grid-cols-3 gap-1">
+
+                        <button type="button"
+                                class="like-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="thumbs-up" class="h-5 w-5"></i>
+                            Like
+                        </button>
+
+                        <button type="button"
+                                class="comment-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="message-circle" class="h-5 w-5"></i>
+                            Comment
+                        </button>
+
+                        <button type="button"
+                                class="share-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="share-2" class="h-5 w-5"></i>
+                            Share
+                        </button>
+
+                    </div>
+
+                    <form class="comment-form mt-3 hidden">
+                        <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            class="w-full rounded-full bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                        >
+                    </form>
+
+                </article>
+
+
+                <!-- Post 2 -->
+                <article class="post-card rounded-xl bg-white p-4 shadow-sm"
+                         data-search="ali technology programming coding javascript">
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-purple-600 text-lg font-bold text-white">
+                                A
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Ali Khan</h3>
+                                <p class="text-xs text-gray-500">
+                                    4 hours ago · <i data-lucide="globe" class="inline h-3 w-3"></i>
+                                </p>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                                class="post-menu-btn rounded-full p-2 hover:bg-gray-100"
+                                aria-label="Post options">
+                            <i data-lucide="more-horizontal" class="h-5 w-5"></i>
+                        </button>
+
+                    </div>
+
+                    <p class="my-4 text-sm leading-6">
+                        Learning something new every day! 💻
+                        Keep practicing, keep building projects, and never stop growing.
+                        #Coding #JavaScript #WebDevelopment
+                    </p>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1000"
+                        alt="People working with technology"
+                        class="max-h-[500px] w-full rounded-lg object-cover"
+                        loading="lazy"
+                    >
+
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+                        <span class="reaction-count">👍 87</span>
+                        <span>12 comments · 3 shares</span>
+                    </div>
+
+                    <hr class="my-3 border-gray-200">
+
+                    <div class="grid grid-cols-3 gap-1">
+
+                        <button type="button"
+                                class="like-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="thumbs-up" class="h-5 w-5"></i>
+                            Like
+                        </button>
+
+                        <button type="button"
+                                class="comment-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="message-circle" class="h-5 w-5"></i>
+                            Comment
+                        </button>
+
+                        <button type="button"
+                                class="share-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="share-2" class="h-5 w-5"></i>
+                            Share
+                        </button>
+
+                    </div>
+
+                    <form class="comment-form mt-3 hidden">
+                        <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            class="w-full rounded-full bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                        >
+                    </form>
+
+                </article>
+
+
+                <!-- Post 3 -->
+                <article class="post-card rounded-xl bg-white p-4 shadow-sm"
+                         data-search="fashion style lifestyle clothing">
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-full bg-pink-600 text-lg font-bold text-white">
+                                F
+                            </div>
+
+                            <div>
+                                <h3 class="font-bold">Fashion & Lifestyle</h3>
+                                <p class="text-xs text-gray-500">
+                                    Yesterday · <i data-lucide="globe" class="inline h-3 w-3"></i>
+                                </p>
+                            </div>
+                        </div>
+
+                        <button type="button"
+                                class="post-menu-btn rounded-full p-2 hover:bg-gray-100"
+                                aria-label="Post options">
+                            <i data-lucide="more-horizontal" class="h-5 w-5"></i>
+                        </button>
+
+                    </div>
+
+                    <p class="my-4 text-sm leading-6">
+                        Your style is your way of expressing yourself.
+                        Be confident, be creative, and be yourself! ✨
+                    </p>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1000"
+                        alt="Fashion and clothing"
+                        class="max-h-[500px] w-full rounded-lg object-cover"
+                        loading="lazy"
+                    >
+
+                    <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+                        <span class="reaction-count">👍 56</span>
+                        <span>8 comments · 2 shares</span>
+                    </div>
+
+                    <hr class="my-3 border-gray-200">
+
+                    <div class="grid grid-cols-3 gap-1">
+
+                        <button type="button"
+                                class="like-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="thumbs-up" class="h-5 w-5"></i>
+                            Like
+                        </button>
+
+                        <button type="button"
+                                class="comment-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="message-circle" class="h-5 w-5"></i>
+                            Comment
+                        </button>
+
+                        <button type="button"
+                                class="share-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                            <i data-lucide="share-2" class="h-5 w-5"></i>
+                            Share
+                        </button>
+
+                    </div>
+
+                    <form class="comment-form mt-3 hidden">
+                        <input
+                            type="text"
+                            placeholder="Write a comment..."
+                            class="w-full rounded-full bg-gray-100 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                        >
+                    </form>
+
+                </article>
+
+            </div>
+
+
+            <!-- Sidebar Navigation Targets -->
+            <section id="friends" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Friends</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Your friends section. Add friend suggestions here.
+                </p>
+            </section>
+
+            <section id="memories" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Memories</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Look back at posts and memories from previous days.
+                </p>
+            </section>
+
+            <section id="saved" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Saved</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Your saved posts will appear here.
+                </p>
+            </section>
+
+            <section id="groups" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Groups</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Explore communities and groups.
+                </p>
+            </section>
+
+            <section id="videos" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Video</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Your video feed will appear here.
+                </p>
+            </section>
+
+            <section id="marketplace" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Marketplace</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Browse products and local listings.
+                </p>
+            </section>
+
+            <section id="events" class="feed-section mt-5 rounded-xl bg-white p-5 shadow-sm">
+                <h2 class="text-lg font-bold">Events</h2>
+                <p class="mt-2 text-sm text-gray-500">
+                    Discover upcoming events.
+                </p>
+            </section>
+
+        </main>
+
+
+        <!-- ================= RIGHT SIDEBAR ================= -->
+        <aside class="right-sidebar hidden w-72 shrink-0 xl:block">
+
+            <div class="sticky top-20 space-y-5">
+
+                <!-- Sponsored -->
+                <section>
+                    <h2 class="mb-3 text-lg font-bold text-gray-600">
+                        Sponsored
+                    </h2>
+
+                    <a href="#marketplace"
+                       class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-200">
+                        <img
+                            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300"
+                            alt="Fashion collection"
+                            class="h-24 w-28 rounded-lg object-cover"
+                        >
+
+                        <div>
+                            <h3 class="text-sm font-semibold">Fashion Collection</h3>
+                            <p class="mt-1 text-xs text-gray-500">Discover new styles</p>
+                        </div>
+                    </a>
+
+                    <a href="#marketplace"
+                       class="flex items-center gap-3 rounded-lg p-2 hover:bg-gray-200">
+                        <img
+                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300"
+                            alt="Accessories"
+                            class="h-24 w-28 rounded-lg object-cover"
+                        >
+
+                        <div>
+                            <h3 class="text-sm font-semibold">Latest Accessories</h3>
+                            <p class="mt-1 text-xs text-gray-500">Explore the collection</p>
+                        </div>
+                    </a>
+                </section>
+
+                <hr class="border-gray-300">
+
+                <!-- Contacts -->
+                <section>
+
+                    <div class="mb-3 flex items-center justify-between">
+
+                        <h2 class="text-lg font-bold text-gray-600">
+                            Contacts
+                        </h2>
+
+                        <div class="flex items-center gap-1">
+
+                            <button
+                                id="contactSearchBtn"
+                                type="button"
+                                aria-label="Search contacts"
+                                title="Search contacts"
+                                class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-gray-200">
+                                <i data-lucide="search" class="h-5 w-5"></i>
+                            </button>
+
+                            <button
+                                id="contactMenuBtn"
+                                type="button"
+                                aria-label="Contact options"
+                                title="Contact options"
+                                class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-gray-200">
+                                <i data-lucide="more-horizontal" class="h-5 w-5"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div id="contactSearchBox" class="mb-3 hidden">
+                        <input
+                            id="contactSearch"
+                            type="search"
+                            placeholder="Search contacts..."
+                            class="w-full rounded-full bg-white px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-200"
+                        >
+                    </div>
+
+                    <div id="contactsList" class="space-y-1">
+
+                        <button type="button"
+                                class="contact-item flex w-full items-center gap-3 rounded-lg p-2 text-left hover:bg-gray-200"
+                                data-name="Sarah Ahmed">
+                            <span class="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"
+                                    alt="Sarah"
+                                    class="h-10 w-10 rounded-full object-cover"
+                                >
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-gray-100 bg-green-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold">Sarah Ahmed</span>
+                        </button>
+
+                        <button type="button"
+                                class="contact-item flex w-full items-center gap-3 rounded-lg p-2 text-left hover:bg-gray-200"
+                                data-name="Ali Khan">
+                            <span class="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100"
+                                    alt="Ali"
+                                    class="h-10 w-10 rounded-full object-cover"
+                                >
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-gray-100 bg-green-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold">Ali Khan</span>
+                        </button>
+
+                        <button type="button"
+                                class="contact-item flex w-full items-center gap-3 rounded-lg p-2 text-left hover:bg-gray-200"
+                                data-name="Ahmed Raza">
+                            <span class="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"
+                                    alt="Ahmed"
+                                    class="h-10 w-10 rounded-full object-cover"
+                                >
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-gray-100 bg-green-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold">Ahmed Raza</span>
+                        </button>
+
+                        <button type="button"
+                                class="contact-item flex w-full items-center gap-3 rounded-lg p-2 text-left hover:bg-gray-200"
+                                data-name="Usman Malik">
+                            <span class="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100"
+                                    alt="Usman"
+                                    class="h-10 w-10 rounded-full object-cover"
+                                >
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-gray-100 bg-green-500"></span>
+                            </span>
+                            <span class="text-sm font-semibold">Usman Malik</span>
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- ================= MOBILE BOTTOM NAV ================= -->
+    <nav class="fixed bottom-0 left-0 z-40 grid w-full grid-cols-5 border-t border-gray-200 bg-white py-2 md:hidden">
+
+        <a href="#home"
+           aria-label="Home"
+           class="flex flex-col items-center gap-1 text-blue-600">
+            <i data-lucide="house" class="h-5 w-5"></i>
+            <span class="text-[10px]">Home</span>
+        </a>
+
+        <a href="#friends"
+           aria-label="Friends"
+           class="flex flex-col items-center gap-1 text-gray-500">
+            <i data-lucide="users" class="h-5 w-5"></i>
+            <span class="text-[10px]">Friends</span>
+        </a>
+
+        <button id="mobileCreatePostBtn"
+                type="button"
+                aria-label="Create post"
+                class="flex flex-col items-center gap-1 text-gray-500">
+            <i data-lucide="plus-square" class="h-5 w-5"></i>
+            <span class="text-[10px]">Create</span>
+        </button>
+
+        <button id="mobileNotificationsBtn"
+                type="button"
+                aria-label="Notifications"
+                class="flex flex-col items-center gap-1 text-gray-500">
+            <i data-lucide="bell" class="h-5 w-5"></i>
+            <span class="text-[10px]">Alerts</span>
+        </button>
+
+        <a href="#profile"
+           aria-label="Profile"
+           class="flex flex-col items-center gap-1 text-gray-500">
+            <i data-lucide="user-round" class="h-5 w-5"></i>
+            <span class="text-[10px]">Profile</span>
+        </a>
+
+    </nav>
+
+
+    <!-- ================= TOAST MESSAGE ================= -->
+    <div
+        id="toast"
+        role="status"
+        aria-live="polite"
+        class="fixed bottom-20 left-1/2 z-[100] hidden -translate-x-1/2 rounded-lg bg-gray-900 px-5 py-3 text-sm text-white shadow-lg md:bottom-5">
+    </div>
+
+    <!-- Your JavaScript -->
+    <script>
+        
+// =============================================
+// FACEBOOK CLONE — JAVASCRIPT
+// File: script.js
+// =============================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // -----------------------------------------
+    // 1. HELPER FUNCTIONS
+    // -----------------------------------------
+
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
+
+    const $$ = (selector, parent = document) =>
+        [...parent.querySelectorAll(selector)];
+
+    const toast = $("#toast");
+    let toastTimer;
+
+    function showToast(message) {
+        if (!toast) {
+            alert(message);
+            return;
+        }
+
+        toast.textContent = message;
+        toast.classList.remove("hidden");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+            toast.classList.add("hidden");
+        }, 2500);
+    }
+
+    function refreshIcons(parent = document) {
+        if (window.lucide) {
+            window.lucide.createIcons({
+                root: parent
+            });
+        }
+    }
+
+    refreshIcons();
+
+
+    // -----------------------------------------
+    // 2. MOBILE SEARCH
+    // -----------------------------------------
+
+    const mobileSearchBtn = $("#mobileSearchBtn");
+    const mobileSearchBox = $("#mobileSearchBox");
+    const mobileSearch = $("#mobileSearch");
+    const desktopSearch = $("#desktopSearch");
+
+    if (mobileSearchBtn && mobileSearchBox) {
+        mobileSearchBtn.addEventListener("click", () => {
+            mobileSearchBox.classList.toggle("hidden");
+
+            if (!mobileSearchBox.classList.contains("hidden")) {
+                mobileSearch?.focus();
+            }
+        });
+    }
+
+
+    // -----------------------------------------
+    // 3. SEARCH POSTS
+    // -----------------------------------------
+
+    function searchPosts(searchValue) {
+        const query = searchValue.trim().toLowerCase();
+
+        $$(".post-card").forEach(post => {
+            const text = (
+                post.innerText + " " +
+                (post.dataset.search || "")
+            ).toLowerCase();
+
+            post.classList.toggle(
+                "hidden",
+                query !== "" && !text.includes(query)
+            );
+        });
+
+        if (query) {
+            $("#feed")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }
+
+    if (desktopSearch) {
+        desktopSearch.addEventListener("input", () => {
+            searchPosts(desktopSearch.value);
+
+            if (mobileSearch) {
+                mobileSearch.value = desktopSearch.value;
+            }
+        });
+    }
+
+    if (mobileSearch) {
+        mobileSearch.addEventListener("input", () => {
+            searchPosts(mobileSearch.value);
+
+            if (desktopSearch) {
+                desktopSearch.value = mobileSearch.value;
+            }
+        });
+    }
+
+
+    // -----------------------------------------
+    // 4. LIKE / UNLIKE POSTS
+    // -----------------------------------------
+
+    $$(".post-card").forEach(post => {
+        const likeBtn = $(".like-btn", post);
+        const countElement = $(".reaction-count", post);
+
+        if (!likeBtn || !countElement) return;
+
+        const originalText = countElement.textContent;
+        const match = originalText.match(/\d+/);
+        let likes = match ? Number(match[0]) : 0;
+        let liked = false;
+
+        likeBtn.addEventListener("click", () => {
+            liked = !liked;
+
+            likes += liked ? 1 : -1;
+
+            likeBtn.classList.toggle("liked", liked);
+
+            likeBtn.style.color = liked
+                ? "#1877f2"
+                : "";
+
+            likeBtn.innerHTML = liked
+                ? '<i data-lucide="thumbs-up"></i> Liked'
+                : '<i data-lucide="thumbs-up"></i> Like';
+
+            countElement.textContent = `👍 ${likes}`;
+
+            refreshIcons(post);
+        });
+    });
+
+
+    // -----------------------------------------
+    // 5. COMMENT BUTTON
+    // -----------------------------------------
+
+    $$(".post-card").forEach(post => {
+        const commentBtn = $(".comment-btn", post);
+        const commentForm = $(".comment-form", post);
+        const commentInput = $("input", commentForm || post);
+
+        if (!commentBtn || !commentForm) return;
+
+        commentBtn.addEventListener("click", () => {
+            commentForm.classList.toggle("hidden");
+
+            if (!commentForm.classList.contains("hidden")) {
+                commentInput?.focus();
+            }
+        });
+
+        commentForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const message = commentInput?.value.trim();
+
+            if (!message) {
+                showToast("Pehle comment likho.");
+                return;
+            }
+
+            const comment = document.createElement("div");
+
+            comment.className =
+                "my-2 rounded-xl bg-gray-100 px-4 py-2 text-sm";
+
+            const name = document.createElement("strong");
+            name.textContent = "You";
+
+            const text = document.createElement("p");
+            text.className = "mt-1";
+            text.textContent = message;
+
+            comment.append(name, text);
+
+            commentForm.insertAdjacentElement("afterend", comment);
+
+            commentInput.value = "";
+
+            showToast("Comment add ho gaya!");
+        });
+
+        // Enter submits the comment; Shift+Enter can be used
+        // only if this input is replaced with a textarea.
+    });
+
+
+    // -----------------------------------------
+    // 6. SHARE POSTS
+    // -----------------------------------------
+
+    $$(".share-btn").forEach(button => {
+        button.addEventListener("click", async () => {
+            const post = button.closest(".post-card");
+            const postText = $("p.my-4", post)?.innerText || "Facebook post";
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: "Facebook Clone",
+                        text: postText,
+                        url: window.location.href
+                    });
+                } catch (error) {
+                    if (error.name !== "AbortError") {
+                        showToast("Share nahi ho saka.");
+                    }
+                }
+            } else if (navigator.clipboard?.writeText) {
+                try {
+                    await navigator.clipboard.writeText(
+                        `${postText}\n${window.location.href}`
+                    );
+
+                    showToast("Post link copy ho gaya!");
+                } catch {
+                    showToast("Browser sharing support nahi karta.");
+                }
+            } else {
+                showToast("Is browser mein sharing available nahi.");
+            }
+        });
+    });
+
+
+    // -----------------------------------------
+    // 7. CREATE POST FORM
+    // -----------------------------------------
+
+    const createPostForm = $("#createPostForm");
+    const postText = $("#postText");
+    const openPostInput = $("#openPostInput");
+    const cancelPostBtn = $("#cancelPostBtn");
+    const postsContainer = $("#postsContainer");
+
+    function openCreatePost() {
+        if (!createPostForm) return;
+
+        createPostForm.classList.remove("hidden");
+        postText?.focus();
+
+        createPostForm.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    }
+
+    openPostInput?.addEventListener("click", openCreatePost);
+
+    $("#mobileCreatePostBtn")?.addEventListener(
+        "click",
+        openCreatePost
+    );
+
+    cancelPostBtn?.addEventListener("click", () => {
+        createPostForm?.reset();
+        createPostForm?.classList.add("hidden");
+
+        const preview = $("#postPreview");
+        preview?.classList.add("hidden");
+
+        const previewImage = $("#postPreviewImage");
+
+        if (previewImage) {
+            previewImage.removeAttribute("src");
+        }
+    });
+
+
+    // -----------------------------------------
+    // 8. PHOTO UPLOAD AND PREVIEW
+    // -----------------------------------------
+
+    const photoBtn = $("#photoBtn");
+    const photoInput = $("#photoInput");
+    const postPreview = $("#postPreview");
+    const postPreviewImage = $("#postPreviewImage");
+
+    photoBtn?.addEventListener("click", () => {
+        openCreatePost();
+        photoInput?.click();
+    });
+
+    photoInput?.addEventListener("change", () => {
+        const file = photoInput.files?.[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            showToast("Image file select karo.");
+            photoInput.value = "";
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            showToast("Image 5 MB se choti honi chahiye.");
+            photoInput.value = "";
+            return;
+        }
+
+        if (postPreviewImage && postPreview) {
+            postPreviewImage.src = URL.createObjectURL(file);
+            postPreview.classList.remove("hidden");
+        }
+
+        showToast("Photo select ho gayi.");
+    });
+
+
+    // -----------------------------------------
+    // 9. VIDEO SELECT
+    // -----------------------------------------
+
+    const videoBtn = $("#videoBtn");
+    const videoInput = $("#videoInput");
+
+    videoBtn?.addEventListener("click", () => {
+        openCreatePost();
+        videoInput?.click();
+    });
+
+    videoInput?.addEventListener("change", () => {
+        const file = videoInput.files?.[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("video/")) {
+            showToast("Video file select karo.");
+            videoInput.value = "";
+            return;
+        }
+
+        showToast(
+            "Video select ho gayi. Demo mein video post storage enabled nahi hai."
+        );
+    });
+
+
+    // -----------------------------------------
+    // 10. PUBLISH NEW POST
+    // -----------------------------------------
+
+    createPostForm?.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const text = postText?.value.trim() || "";
+        const photoFile = photoInput?.files?.[0];
+
+        if (!text && !photoFile) {
+            showToast("Post ke liye text ya photo add karo.");
+            return;
+        }
+
+        const article = document.createElement("article");
+
+        article.className =
+            "post-card rounded-xl bg-white p-4 shadow-sm";
+
+        article.dataset.search = text.toLowerCase();
+
+        // Post header
+        const header = document.createElement("div");
+        header.className = "flex items-center justify-between";
+
+        const userInfo = document.createElement("div");
+        userInfo.className = "flex items-center gap-3";
+
+        const avatar = document.createElement("div");
+        avatar.className =
+            "flex h-11 w-11 items-center justify-center rounded-full bg-blue-600 font-bold text-white";
+        avatar.textContent = "U";
+
+        const details = document.createElement("div");
+
+        const username = document.createElement("h3");
+        username.className = "font-bold";
+        username.textContent = "You";
+
+        const time = document.createElement("p");
+        time.className = "text-xs text-gray-500";
+        time.textContent = "Just now · Public";
+
+        details.append(username, time);
+        userInfo.append(avatar, details);
+
+        const menuBtn = document.createElement("button");
+        menuBtn.type = "button";
+        menuBtn.className =
+            "post-menu-btn rounded-full p-2 hover:bg-gray-100";
+        menuBtn.setAttribute("aria-label", "Post options");
+        menuBtn.innerHTML = '<i data-lucide="more-horizontal"></i>';
+
+        header.append(userInfo, menuBtn);
+        article.appendChild(header);
+
+        // Post text
+        if (text) {
+            const paragraph = document.createElement("p");
+            paragraph.className = "my-4 text-sm leading-6";
+            paragraph.textContent = text;
+            article.appendChild(paragraph);
+        }
+
+        // Post image
+        if (photoFile) {
+            const image = document.createElement("img");
+            image.src = URL.createObjectURL(photoFile);
+            image.alt = "Your new post";
+            image.className =
+                "max-h-[500px] w-full rounded-lg object-cover";
+
+            article.appendChild(image);
+        }
+
+        // Reactions summary
+        const summary = document.createElement("div");
+        summary.className =
+            "mt-3 flex items-center justify-between text-sm text-gray-500";
+
+        const reactionCount = document.createElement("span");
+        reactionCount.className = "reaction-count";
+        reactionCount.textContent = "👍 0";
+
+        const commentsSummary = document.createElement("span");
+        commentsSummary.textContent = "0 comments";
+
+        summary.append(reactionCount, commentsSummary);
+        article.appendChild(summary);
+
+        article.appendChild(document.createElement("hr"));
+
+        // Action buttons
+        const actions = document.createElement("div");
+        actions.className = "grid grid-cols-3 gap-1";
+
+        actions.innerHTML = `
+            <button type="button"
+                    class="like-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                <i data-lucide="thumbs-up"></i> Like
+            </button>
+
+            <button type="button"
+                    class="comment-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                <i data-lucide="message-circle"></i> Comment
+            </button>
+
+            <button type="button"
+                    class="share-btn flex items-center justify-center gap-2 rounded-lg p-2 font-semibold text-gray-600 hover:bg-gray-100">
+                <i data-lucide="share-2"></i> Share
+            </button>
+        `;
+
+        article.appendChild(actions);
+
+        // Comment form
+        const commentForm = document.createElement("form");
+        commentForm.className = "comment-form mt-3 hidden";
+
+        const commentInput = document.createElement("input");
+        commentInput.type = "text";
+        commentInput.placeholder = "Write a comment...";
+        commentInput.className =
+            "w-full rounded-full bg-gray-100 px-4 py-3 text-sm outline-none";
+
+        commentForm.appendChild(commentInput);
+        article.appendChild(commentForm);
+
+        // Add post at the top of the feed
+        postsContainer?.prepend(article);
+
+        // Attach events to the new post
+        attachPostEvents(article);
+
+        refreshIcons(article);
+
+        createPostForm.reset();
+        createPostForm.classList.add("hidden");
+
+        postPreview?.classList.add("hidden");
+
+        if (postPreviewImage) {
+            postPreviewImage.removeAttribute("src");
+        }
+
+        searchPosts(desktopSearch?.value || mobileSearch?.value || "");
+
+        showToast("Tumhari post add ho gayi!");
+
+        article.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+
+    // -----------------------------------------
+    // 11. POST EVENT HANDLERS
+    // Used for existing and newly created posts
+    // -----------------------------------------
+
+    function attachPostEvents(post) {
+
+        // Like
+        const likeBtn = $(".like-btn", post);
+        const countElement = $(".reaction-count", post);
+
+        if (likeBtn && countElement && !likeBtn.dataset.bound) {
+            likeBtn.dataset.bound = "true";
+
+            const match = countElement.textContent.match(/\d+/);
+            let likes = match ? Number(match[0]) : 0;
+            let liked = false;
+
+            likeBtn.addEventListener("click", () => {
+                liked = !liked;
+                likes += liked ? 1 : -1;
+
+                likeBtn.classList.toggle("liked", liked);
+                likeBtn.style.color = liked ? "#1877f2" : "";
+
+                likeBtn.innerHTML = liked
+                    ? '<i data-lucide="thumbs-up"></i> Liked'
+                    : '<i data-lucide="thumbs-up"></i> Like';
+
+                countElement.textContent = `👍 ${likes}`;
+
+                refreshIcons(post);
+            });
+        }
+
+        // Comment
+        const commentBtn = $(".comment-btn", post);
+        const commentForm = $(".comment-form", post);
+
+        if (commentBtn && commentForm && !commentBtn.dataset.bound) {
+            commentBtn.dataset.bound = "true";
+
+            commentBtn.addEventListener("click", () => {
+                commentForm.classList.toggle("hidden");
+
+                if (!commentForm.classList.contains("hidden")) {
+                    $("input", commentForm)?.focus();
+                }
+            });
+
+            commentForm.addEventListener("submit", event => {
+                event.preventDefault();
+
+                const input = $("input", commentForm);
+                const message = input?.value.trim();
+
+                if (!message) {
+                    showToast("Pehle comment likho.");
+                    return;
+                }
+
+                const comment = document.createElement("div");
+                comment.className =
+                    "my-2 rounded-xl bg-gray-100 px-4 py-2 text-sm";
+
+                const username = document.createElement("strong");
+                username.textContent = "You";
+
+                const commentText = document.createElement("p");
+                commentText.className = "mt-1";
+                commentText.textContent = message;
+
+                comment.append(username, commentText);
+                commentForm.insertAdjacentElement("afterend", comment);
+
+                input.value = "";
+
+                showToast("Comment add ho gaya!");
+            });
+        }
+
+        // Share
+        const shareBtn = $(".share-btn", post);
+
+        if (shareBtn && !shareBtn.dataset.bound) {
+            shareBtn.dataset.bound = "true";
+
+            shareBtn.addEventListener("click", async () => {
+                const text = $("p.my-4", post)?.innerText || "Facebook post";
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: "Facebook Clone",
+                            text,
+                            url: window.location.href
+                        });
+                    } catch (error) {
+                        if (error.name !== "AbortError") {
+                            showToast("Share nahi ho saka.");
+                        }
+                    }
+                } else if (navigator.clipboard?.writeText) {
+                    try {
+                        await navigator.clipboard.writeText(
+                            `${text}\n${window.location.href}`
+                        );
+                        showToast("Post text aur link copy ho gaye!");
+                    } catch {
+                        showToast("Copy nahi ho saka.");
+                    }
+                } else {
+                    showToast("Sharing is browser mein available nahi.");
+                }
+            });
+        }
+
+        // Post menu
+        const menuBtn = $(".post-menu-btn", post);
+
+        if (menuBtn && !menuBtn.dataset.bound) {
+            menuBtn.dataset.bound = "true";
+
+            menuBtn.addEventListener("click", () => {
+                const shouldHide = confirm(
+                    "OK dabao to is post ko hide karo. Cancel dabao to post rehne do."
+                );
+
+                if (shouldHide) {
+                    post.classList.add("hidden");
+                    showToast("Post hide kar di gayi.");
+                }
+            });
+        }
+    }
+
+
+    // Attach event handlers to existing posts
+    $$(".post-card").forEach(attachPostEvents);
+
+
+    // -----------------------------------------
+    // 12. FEELING BUTTON
+    // -----------------------------------------
+
+    $("#feelingBtn")?.addEventListener("click", () => {
+        const feeling = prompt(
+            "Apna mood likho (e.g. Happy, Excited, Blessed):"
+        );
+
+        if (feeling && feeling.trim()) {
+            const currentText = postText?.value || "";
+
+            if (postText) {
+                postText.value =
+                    `${currentText}${currentText ? "\n" : ""}Feeling ${feeling.trim()} 😊`;
+            }
+
+            openCreatePost();
+        }
+    });
+
+
+    // -----------------------------------------
+    // 13. CREATE STORY
+    // -----------------------------------------
+
+    $("#createStoryBtn")?.addEventListener("click", () => {
+        showToast("Story feature demo hai. Story upload ke liye backend chahiye.");
+    });
+
+    $("#seeAllStories")?.addEventListener("click", () => {
+        showToast("Ye demo stories hain.");
+    });
+
+    $$(".story-card").forEach(story => {
+        story.addEventListener("click", () => {
+            const name = $("span:last-child", story)?.textContent || "Friend";
+            showToast(`${name} ki story demo hai.`);
+        });
+    });
+
+
+    // -----------------------------------------
+    // 14. CONTACT SEARCH
+    // -----------------------------------------
+
+    const contactSearchBtn = $("#contactSearchBtn");
+    const contactSearchBox = $("#contactSearchBox");
+    const contactSearch = $("#contactSearch");
+
+    contactSearchBtn?.addEventListener("click", () => {
+        contactSearchBox?.classList.toggle("hidden");
+
+        if (!contactSearchBox?.classList.contains("hidden")) {
+            contactSearch?.focus();
+        }
+    });
+
+    contactSearch?.addEventListener("input", () => {
+        const query = contactSearch.value.trim().toLowerCase();
+
+        $$(".contact-item").forEach(contact => {
+            const name = (
+                contact.dataset.name || contact.innerText
+            ).toLowerCase();
+
+            contact.classList.toggle(
+                "hidden",
+                query !== "" && !name.includes(query)
+            );
+        });
+    });
+
+    $$(".contact-item").forEach(contact => {
+        contact.addEventListener("click", () => {
+            const name = contact.dataset.name || "Friend";
+            showToast(`${name} ka chat feature abhi demo hai.`);
+        });
+    });
+
+
+    // -----------------------------------------
+    // 15. NAVBAR BUTTONS
+    // -----------------------------------------
+
+    $("#messengerBtn")?.addEventListener("click", () => {
+        showToast("Messenger feature ke liye backend chahiye.");
+    });
+
+    $("#notificationsBtn")?.addEventListener("click", () => {
+        showToast("Abhi koi new notification nahi hai.");
+    });
+
+    $("#mobileNotificationsBtn")?.addEventListener("click", () => {
+        showToast("Notifications demo mode mein hain.");
+    });
+
+    $("#menuBtn")?.addEventListener("click", () => {
+        showToast("Menu button click ho gaya.");
+    });
+
+    $("#profileMenuBtn")?.addEventListener("click", () => {
+        showToast("Profile menu demo mode mein hai.");
+    });
+
+    $("#contactMenuBtn")?.addEventListener("click", () => {
+        showToast("Contacts options demo mode mein hain.");
+    });
+
+
+    // -----------------------------------------
+    // 16. NAVIGATION
+    // -----------------------------------------
+
+    $$('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", event => {
+            const href = link.getAttribute("href");
+
+            if (!href || href === "#") return;
+
+            const target = $(href);
+
+            if (target) {
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+                history.replaceState(null, "", href);
+            }
+        });
+    });
+
+
+    // -----------------------------------------
+    // 17. FINAL INITIALIZATION
+    // -----------------------------------------
+
+    refreshIcons();
+
+    console.log("Facebook Clone JavaScript loaded successfully!");
+
+});
+
+    </script>
+
+    <!-- Initialize icons after HTML is loaded -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
+
+</body>
+</html>
